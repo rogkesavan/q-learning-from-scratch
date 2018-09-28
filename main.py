@@ -4,11 +4,14 @@ state = envout.encode(3, 1, 2, 0) # (taxi row, taxi column, passenger index, des
 envout.s = state
 envout.render()
 envout.P[328]
-
+env.s = 328
 epoch = 0
 penalties, reward = 0, 0
 frames = [] #for anniamation 
 done = False 
+#We'll create an infinite loop which runs until one
+#  passenger reaches one destination (one episode), or in other words, when 
+# the received reward is 20. The env.action_space.sample()
 while not done:
     action = envout.action_space.sample()
     state, reward, done, info = envout.step(action)
